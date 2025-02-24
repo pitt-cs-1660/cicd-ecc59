@@ -9,6 +9,8 @@ FROM python:3.11-buster as app
 WORKDIR /app
 COPY --from=builder /app /app
 COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 EXPOSE 8000
 ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["uvicorn", "cc_compose.server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["poetry", "run", "uvicorn", "cc_compose.server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+
