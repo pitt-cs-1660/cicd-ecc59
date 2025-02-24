@@ -1,6 +1,5 @@
 services:
   fastapi:
-    ### Add build context instruction here
     build:
       context: .
       
